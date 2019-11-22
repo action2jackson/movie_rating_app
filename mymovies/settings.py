@@ -25,12 +25,13 @@ SECRET_KEY = 'sp*g9=!@1hvdyog9ga$7pzxihx=_x^)l*t8f_*^+zh!@10$-w9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'movie.apps.MovieConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
