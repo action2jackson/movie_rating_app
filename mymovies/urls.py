@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # Adding the movie apps urls (if there was another app then it would also be added here
     path('', include('movie.urls')),
     path('admin/', admin.site.urls),
 ]

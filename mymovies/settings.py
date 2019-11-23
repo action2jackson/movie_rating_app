@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # Lower case and then uppercase 'movie' = 'Movie'
     'movie.apps.MovieConfig',
     'django.contrib.admin',
     'django.contrib.auth',

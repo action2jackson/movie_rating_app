@@ -1,0 +1,14 @@
+<body>
+    <form action="" name="search">
+        <!-- Takes the users input in the text field and connects it with backend user_query -->
+        <input type="text" name="query" value="{{request.GET.query}}"/>
+        <!-- This is just a button to submit information -->
+        <input type="submit" value="Search" />
+    </form>
+    {% for movie in search_result %}
+        <!-- looks through all movie names and finds best match for user input -->
+        <p>{{ movie.fields.Name }}</p>
+        <!-- Shows the picture that matches the name -->
+        <img src="{{ movie.fields.Pictures.0.url }}" alt="" />
+    {% endfor %}
+</body>
