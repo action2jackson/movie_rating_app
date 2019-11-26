@@ -26,4 +26,20 @@ def home_page(request):
     return render(request, 'movie/movie_stuff.html', stuff_for_frontend)
 
 def create(request):
+    # POST is for user input into backend
+    if request.method == 'POST':
+        # Dictionary
+        data = {
+            # Name that shows for movie when created
+            'Name': request.POST.get('name'),
+            # Picture needs a url to show
+            'Pictures': [{'url': request.POST.get('url')}],
+            # Rating that shows for movie when created int = only integers
+            'Rating': int(request.POST.get('rating')),
+            # Notes that show for movie when created
+            'Notes': request.POST.get('notes')
+        }
+
+        # Adds data dictionary to Airtable server
+        AT.insert(data)
     return redirect('/')
