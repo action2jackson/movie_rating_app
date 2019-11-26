@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 # Need this import for airtable to connect
 from airtable import Airtable
@@ -24,3 +24,6 @@ def home_page(request):
     # makes search_result callable for front-end
     stuff_for_frontend = {'search_result': search_result}
     return render(request, 'movie/movie_stuff.html', stuff_for_frontend)
+
+def create(request):
+    return redirect('/')
