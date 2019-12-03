@@ -1,0 +1,33 @@
+<!-- This html file is the form that pops up when the "View Details" button is pressed -->
+<div class="modal fade" id="modal-{{movie.id}}">
+    <!-- the entire modal (border) -->
+    <div class="modal-dialog">
+        <!-- all the content: Name, Rating, background etc.. -->
+    	<div class="modal-content">
+            <!-- Makes the header of the modal look nice -->
+    		<div class="modal-header">
+                <!-- The name of the movie at the top -->
+    			<h5 class="modal-title" id="modalName">{{movie.fields.Name}}</h5>
+                <!-- this button allows the user to exit the details modal -->
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+    		</div>
+            <!-- makes the body of the modal look nice -->
+            <div class="modal-body">
+                <!-- allows the movie to fit inside the form perfectly -->
+            	<div class="movies__item full-width">
+                    <!-- All the guts to the movie! -->
+            		<i class="movies__item-star fa fa-star hide"></i>
+                    <p class="movies__item-rating hide">{{movie.fields.Rating}}/10</p>
+                    <img class="movies__item-image" src="{{ movie.fields.Pictures.0.url }}"/>
+                    <div class="movies__item-title">
+                    	<p>{{ movie.fields.Notes }}</p>
+                    </div>
+            	</div>
+            </div>
+            <!-- keeps bottom part of the modal looking nice -->
+            <div class="modal-footer">
+            	<button type="button" class="btn btn-primary">Edit</button>
+            </div>
+    	</div>
+    </div>
+</div>

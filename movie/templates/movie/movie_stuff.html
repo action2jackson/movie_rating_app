@@ -32,7 +32,7 @@
                         	</form>
                         </div>
 
-                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create</button>
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create Movie</button>
 
     				</div>
     			</div>
@@ -42,11 +42,15 @@
             	<div class="container">
             		<div class="movies">
             			{% for movie in search_result %}
-                            <div class="movies__item">
+                            <div class="movies__item" style="margin: auto;">
                                 <!-- gets star rating from font awesome -->
                                 <i class="movies__item-star fa fa-star hide"></i>
                                 <!-- what ever the user rates the movie it will send it to the front-end __/10 -->
                                 <p class="movies__item-rating hide">{{ movie.fields.Rating }}/10</p>
+                                <!-- This button is used to see the details of the button -->
+                                <!-- data-toggle is used by Bootstrap to connect the css and html nicer! -->
+                                <!-- data-target is used with Javascript to find the id of the html tag -->
+                                <button type="button" class="movies__item-expander hide" data-toggle="modal" data-target="#modal-{{movie.id}}">View Details</button>
                                 <!-- gets the movies picture -->
                             	<img class="movies__item-image" src="{{ movie.fields.Pictures.0.url }}" alt="" />
                                 <div class="movies__item-title">
@@ -54,6 +58,8 @@
                                 	<p>{{ movie.fields.Name }}</p>
                                 </div>
                             </div>
+                          <!-- connects the detail-modal to this main html file -->
+                          {% include "movie/detail-modal.html" %}
                         {% endfor %}
             		</div>
             	</div>
