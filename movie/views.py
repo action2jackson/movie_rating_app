@@ -39,7 +39,26 @@ def create(request):
             # Notes that show for movie when created
             'Notes': request.POST.get('notes')
         }
-
         # Adds data dictionary to Airtable server
         AT.insert(data)
     return redirect('/')
+
+
+def edit(request, movie_id):
+    # If the update button is hit by the user then ...
+    if request.method == 'POST':
+        # Copy and pasted this from the create function!
+        data = {
+            # Name that shows for movie when created
+            'Name': request.POST.get('name'),
+            # Picture needs a url to show
+            'Pictures': [{'url': request.POST.get('url')}],
+            # Rating that shows for movie when created int = only integers
+            'Rating': int(request.POST.get('rating')),
+            # Notes that show for movie when created
+            'Notes': request.POST.get('notes')
+        }
+        # Each movie has an id, so the program takes in a specific id and ulters its data
+        AT.update(movie_id, data)
+    return redirect('/')
+

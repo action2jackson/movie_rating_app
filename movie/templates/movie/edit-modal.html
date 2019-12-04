@@ -1,5 +1,5 @@
 <!-- This html file pops up a modal when the user clicks the "edit" button on View details -->
-<!-- same class for all forms, only id is different so it can override the changes for this particular modal -->
+<!-- same class for all forms, only id is different because its for the edit modal, but it still gets a singular movie-->
 <div class="modal fade" id="edit-modal-{{movie.id}}">
     <!-- Same modal formatting as the detail form -->
 	<div class="modal-dialog">
@@ -13,7 +13,8 @@
             <!-- Entire body of the form -->
             <div class="modal-body">
                 <!-- method equals post because we are altering the data through the user frontend -->
-            	<form action="" method="post">
+                <!-- attaches back-end, and movie_id=movie.id is just like pk=post.pk needs to be stated so the system knows to look for a singular movie -->
+            	<form action="{% url 'edit' movie_id=movie.id %}" method="post">
                     <!-- used for security reasons when using method post so someone doesn't intercept your data -->
                     {% csrf_token %}
                     <!-- same class for all of the movie values -->
