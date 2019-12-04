@@ -52,7 +52,7 @@
                                 <!-- data-target is used with Javascript to find the id of the html tag -->
                                 <button type="button" class="movies__item-expander hide" data-toggle="modal" data-target="#modal-{{movie.id}}">View Details</button>
                                 <!-- gets the movies picture -->
-                            	<img class="movies__item-image" src="{{ movie.fields.Pictures.0.url }}" alt="" />
+                            	<img class="movies__item-image" src="{{ movie.fields.Pictures.0.url }}" alt="no movie" />
                                 <div class="movies__item-title">
                                     <!-- gets the movies title -->
                                 	<p>{{ movie.fields.Name }}</p>
@@ -60,6 +60,7 @@
                             </div>
                           <!-- connects the detail-modal to this main html file -->
                           {% include "movie/detail-modal.html" %}
+                            {% include 'movie/edit-modal.html' %}
                         {% endfor %}
             		</div>
             	</div>

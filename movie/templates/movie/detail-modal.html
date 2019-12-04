@@ -26,7 +26,8 @@
             </div>
             <!-- keeps bottom part of the modal looking nice -->
             <div class="modal-footer">
-            	<button type="button" class="btn btn-primary">Edit</button>
+                <!-- changed the button so its tracked by Javascript -->
+            	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal-{{movie.id}}">Edit</button>
             </div>
     	</div>
     </div>

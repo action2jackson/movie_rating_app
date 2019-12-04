@@ -1,0 +1,50 @@
+<!-- This html file pops up a modal when the user clicks the "edit" button on View details -->
+<!-- same class for all forms, only id is different so it can override the changes for this particular modal -->
+<div class="modal fade" id="edit-modal-{{movie.id}}">
+    <!-- Same modal formatting as the detail form -->
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+                <!-- displays the name of the movie -->
+				<h5 class="modal-title" id="editModal">{{ movie.fields.Name}}</h5>
+                <!-- x icon that allows user to exit the form -->
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+			</div>
+            <!-- Entire body of the form -->
+            <div class="modal-body">
+                <!-- method equals post because we are altering the data through the user frontend -->
+            	<form action="" method="post">
+                    <!-- used for security reasons when using method post so someone doesn't intercept your data -->
+                    {% csrf_token %}
+                    <!-- same class for all of the movie values -->
+            		<div class="form-group">
+                        <!-- label above the user input block -->
+            			<label for="editName">Name</label>
+                        <!-- The input box where the user can edit the name of the movie! Gave it a value so it changes that particular movie title -->
+                        <input type="text" class="form-control" id="editName" placeholder="Enter name" name="name" value="{{ movie.fields.Name }}"/>
+            		</div>
+
+                    <!-- Same thing for the rest of the divs: label and then user input -->
+                    <div class="form-group">
+                    	<label for="editURL">Image URL</label>
+                        <input type="text" class="form-control" id="editURL" placeholder="url" name="url" value="{{movie.fields.Pictures.0.url}}" />
+                    </div>
+
+                     <div class="form-group">
+                    	<label for="editRating">Rating</label>
+                        <input type="number" class="form-control" id="editRating" placeholder="1-10" name="rating" value="{{movie.fields.Rating}}" min="1" max="10"/>
+                    </div>
+
+                     <div class="form-group">
+                    	<label for="editNotes">Notes</label>
+                         <textarea class="form-control" id="editNotes" placeholder="Add notes" name="notes"></textarea>
+                    </div>
+
+                    <!-- button to update the edited movie -->
+                    <button type="submit" class="btn btn-primary">Update</button>
+
+            	</form>
+            </div>
+		</div>
+	</div>
+</div>
