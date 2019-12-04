@@ -62,3 +62,8 @@ def edit(request, movie_id):
         AT.update(movie_id, data)
     return redirect('/')
 
+# Needs specific moviw to delete
+def delete(request, movie_id):
+    # Deletes the movie off of Airtable
+    AT.delete(movie_id)
+    return redirect('/')

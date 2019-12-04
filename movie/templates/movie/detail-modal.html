@@ -28,7 +28,10 @@
             <div class="modal-footer">
                 <!-- changed the button so its tracked by Javascript -->
             	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal-{{movie.id}}">Edit</button>
+                <!-- connects the back-end delete function to a delete button on the front-end -->
+                <a href="{% url 'delete' movie_id=movie.id %}" class="btn btn-danger">Delete</a>
             </div>
+
     	</div>
     </div>
 </div>
