@@ -40,7 +40,9 @@ def create(request):
             'Notes': request.POST.get('notes')
         }
         # Adds data dictionary to Airtable server
-        AT.insert(data)
+        response = AT.insert(data)
+        # when movie is created it gets its name through the Airtable field and then shows it in an alert message
+        messages.success(request, 'New movie added: {}'.format(response['fields'].get('Name')))
     return redirect('/')
 
 
@@ -59,11 +61,20 @@ def edit(request, movie_id):
             'Notes': request.POST.get('notes')
         }
         # Each movie has an id, so the program takes in a specific id and ulters its data
-        AT.update(movie_id, data)
+        response = AT.update(movie_id, data)
+        # same message alert as create movie except this for editing a movie
+        # success makes the alert message look green
+        messages.success(request, 'successfully updated movie: {}'.format(response['fields'].get('Name')))
     return redirect('/')
 
 # Needs specific moviw to delete
 def delete(request, movie_id):
+    # gets the movie id, gos into its fields and gets the name of the movie
+    # needed to get this movies name right from airtable because its getting deleted completely out of the database
+    movie_name = AT.get(movie_id)['fields'].get('Name')
     # Deletes the movie off of Airtable
     AT.delete(movie_id)
+    # calls the movie_name variable
+    # warning makes the alert message look red
+    messages.warning(request, 'Deleted movie:{}'.format(movie_name))
     return redirect('/')

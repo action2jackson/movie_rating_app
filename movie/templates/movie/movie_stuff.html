@@ -40,6 +40,22 @@
 
             <section class="result">
             	<div class="container">
+                    <!-- Show notifications (if any) -->
+                    {% if messages %}
+                    	{% for message in messages %}
+                            <!-- alert displays an alert box, which consists of the message tags in the back-end-->
+                    		<div class="alert alert-{{ message.tags }}">
+                                <!-- allows user to get rid of the alert message when it pops up -->
+                                <!-- href=# is to referrence the start of the document at the current base URL -->
+                    			<a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <!-- displays the message from the back-end -->
+                                {{ message }}
+                    		</div>
+                    	{% endfor %}
+                    {% endif %}
+
+                    <!-- Show all movies -->
+
             		<div class="movies">
             			{% for movie in search_result %}
                             <div class="movies__item" style="margin: auto; padding: 0px 10px;">
