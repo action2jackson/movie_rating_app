@@ -19,7 +19,8 @@
     	<div class="wrapper">
     		<nav class="nav">
     			<div class="container">
-    				<div class="nav__menu">
+                    <!-- added padding top for when the window gets smaller -->
+    				<div class="nav__menu" style="padding-top: 40px;">
                         <!-- sends the user back to home page -->
     					<a class="nav__header" href="/">Jackson's Movies</a>
                         <div class="col-md-5 pull-right">
@@ -32,14 +33,15 @@
                         	</form>
                         </div>
 
-                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create Movie</button>
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create</button>
 
     				</div>
     			</div>
     		</nav>
 
             <section class="result">
-            	<div class="container">
+                <!-- extra padding for when the window gets smaller -->
+            	<div class="container" style="padding-top: 40px;">
                     <!-- Show notifications (if any) -->
                     {% if messages %}
                     	{% for message in messages %}
@@ -58,7 +60,8 @@
 
             		<div class="movies">
             			{% for movie in search_result %}
-                            <div class="movies__item" style="margin: auto; padding: 0px 10px;">
+                            <!-- margin top is so the details button is correctly placed on the page -->
+                            <div class="movies__item" style="margin-top: 100px;">
                                 <!-- gets star rating from font awesome -->
                                 <i class="movies__item-star fa fa-star hide"></i>
                                 <!-- what ever the user rates the movie it will send it to the front-end __/10 -->
